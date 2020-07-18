@@ -26,6 +26,8 @@ public class CinemaInitServiceImpl implements ICinemaInitService{
     @Autowired private ProjectionRepository projectionRepository;
     @Autowired private CategorieRepository categorieRepository;
     @Autowired private TicketRepository ticketRepository;
+    @Autowired private RoleRepository roleRepository;
+    @Autowired private CompteRepository compteRepository;
 
 
     @Override
@@ -71,7 +73,6 @@ public class CinemaInitServiceImpl implements ICinemaInitService{
     @Override
     public void initPlaces() {
         salleRepository.findAll().forEach(salle -> {
-//            System.out.println("bulll\n\n\n\n");
             for (int i = 0; i < salle.getNombrePlace(); i++) {
                 Place place = new Place();
                 place.setNumero(i+1);
@@ -154,5 +155,39 @@ public class CinemaInitServiceImpl implements ICinemaInitService{
                 ticketRepository.save(ticket);
             }
         ));
+    }
+
+    @Override
+    public void initRoles() {
+        Role role1 = new Role();
+        role1.setRole("ADMIN");
+        roleRepository.save(role1);
+        System.out.println("admin \n");
+    }
+
+    @Override
+    public void initComptes() {
+        Compte compte1 = new Compte();
+        compte1.setUsername("admin");
+        compte1.setPassword("$2a$10$uvnSJ6mHxBya9hMs7GdYH.9CSzocPXlJk58NnfbxBhdFe5AW0dhIq");
+        compte1.setRole(roleRepository.findByRole("ADMIN"));
+        compte1.setActive((byte) 1);
+        compteRepository.save(compte1);
+//
+//        Compte compte2 = new Compte();
+//        compte2.setUsername("prof");
+//        //pass : prof
+//        compte2.setPassword("$2a$10$YCYMAwqcHNX4o2X6zrpD3.brmiN945uN6hLwc2fe1ZOgTQvgSQcwi");
+//        compte2.setRole(roleRepository.getOne((long) 2));
+//        compte2.setActive((byte) 1);
+//        compteRepository.save(compte2);
+//
+//        Compte compte3 = new Compte();
+//        compte3.setUsername("etud");
+//        //pass : etud
+//        compte3.setPassword("$2a$10$cAmHAFW.IQc8fCBEaa7Lg.bNAimNdOok0/GFTcstwXu.0SzhZxcze");
+//        compte3.setRole(roleRepository.getOne((long) 3));
+//        compte3.setActive((byte) 1);
+//        compteRepository.save(compte3);
     }
 }

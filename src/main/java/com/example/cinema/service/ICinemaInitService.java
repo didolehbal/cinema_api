@@ -10,6 +10,8 @@ public interface ICinemaInitService {
     public void initFilms();
     public void initProjections();
     public void initTickets();
+    public void initRoles();
+    public void initComptes();
 }
 
 

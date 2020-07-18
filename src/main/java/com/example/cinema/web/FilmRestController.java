@@ -23,6 +23,7 @@ public class FilmRestController {
     @Autowired private FilmRepository filmRepository;
     @Autowired private TicketRepository ticketRepository;
 
+    @CrossOrigin("*")
     @GetMapping(path = "/imageFilm/{id}",produces = MediaType.IMAGE_JPEG_VALUE)
     public byte[] image(@PathVariable (name="id")Long id) throws Exception{
         Film f = filmRepository.findById(id).get();
