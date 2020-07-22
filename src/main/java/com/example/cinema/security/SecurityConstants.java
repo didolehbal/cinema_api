@@ -6,8 +6,7 @@ public final class SecurityConstants {
 
     // Signing key for HS512 algorithm
     // You can use the page http://www.allkeysgenerator.com/ to generate all kinds of keys
-    public static final String JWT_SECRET = "b2cbe83d455a449f8fb0b6efedee5cf9skdlklsd4554ew5f45w45f45efewfesakalklsklasklaksalkaslsklewkdlweklwelkwe";
-//    public static final String SECRET = "toddler";
+    public static final String JWT_SECRET = "z3cbe87d455a349f8fb0b6efedee5kf9skdlklsd4554ew5f45w45f45efewfesakalklsklasklaksalkaslsklewkdlweklwelkwe";
 
 
     // JWT token defaults
